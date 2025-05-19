@@ -14,12 +14,13 @@
 
 
 from threading import Thread
-from filling.display import activate as activale_display
-from filling.main import main
+
+from main.display import activate as display
+from main.system import system
 
 
-display_process = Thread (target = activale_display)
-main_process = Thread (target = main)
+display_process = Thread (target = display)
+system_process = Thread (target = system)
 
 display_process.start ()
-main_process.start ()
+system_process.start ()

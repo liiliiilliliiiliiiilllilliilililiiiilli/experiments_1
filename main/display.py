@@ -9,8 +9,8 @@ import time
 
 
 display_stats = {'width': 0, 'height': 0, 'data': ''}  # actually stretched with CLI sizes
-fps = 25
 is_resize_allowed = True
+fps = 25
 
 
 
@@ -72,10 +72,10 @@ def activate ():  # the display proccess itself
 
     while 1:
 
-        if resize_allowed():
+        if resize_allowed ():
 
-            cli_sizes = list(os.get_terminal_size())
-            set_sizes (cli_sizes[0], cli_sizes[1]-1)
+            cli_sizes = list (os.get_terminal_size ())
+            set_sizes (cli_sizes[0], cli_sizes[1]-2)
 
-        print (get())
-        time.sleep (1/fps)
+        print (get ())
+        time.sleep (1 / fps)
