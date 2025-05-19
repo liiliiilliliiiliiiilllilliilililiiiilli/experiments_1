@@ -4,6 +4,8 @@
 #  
 
 
+import time
+
 from main.project_lib import clear_terminal
 
 from main.system_modules.test_blinks import test_blinks
@@ -12,6 +14,8 @@ from main.abstractions_converter_model.abstractions_converter_model import abstr
 
 
 def system ():
+
+    time.sleep (2.5)
 
     clear_terminal ()
     test_blinks ()
