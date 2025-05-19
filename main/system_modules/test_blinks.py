@@ -1,10 +1,12 @@
 import time
 
+import configuration
+
 from main.project_lib import o
 from main import display 
 
 
-updates_fps = 1
+updates_fps = configuration.test_blinks_updates_fps
 
 
 def test_blinks ():
@@ -14,9 +16,10 @@ def test_blinks ():
         width, height = display.sizes().values()
 
         # for pic in o + o[1:-1][::-1]:
-        for pic in o[:-2] + o[1:-3][::-1]:
+        # for pic in o[:-2] + o[1:-3][::-1]:
         # for pic in o[:-1] + o[1:-2][::-1]:
         # for pic in (o[1:] + o[2:-1][::-1])[1:] + (o[1:] + o[2:-1][::-1])[0]:  # More smooth not so blinking variant.
+        for pic in o[:2]:
 
             new_frame = ''
             new_frame += ''.join (o[4] for w in range (width)) + '\n'

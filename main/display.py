@@ -7,10 +7,12 @@
 import os
 import time
 
+import configuration
+
 
 display_stats = {'width': 0, 'height': 0, 'data': ''}  # actually stretched with CLI sizes
 is_resize_allowed = True
-fps = 25
+fps = configuration.display_fps
 
 
 
