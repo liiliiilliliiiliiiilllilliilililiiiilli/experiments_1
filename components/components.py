@@ -1,8 +1,13 @@
+
+# file of project's components
+
+
+
 from params.params import o, mode, height, width, field, field_initial_state
 
 
 
-def rule (l, c, r, type):
+def rule (l, c, r, type):  # cells' interaction rule
 
     dests = list(map(int, bin(type)[2:].rjust(8, '0')))
 
@@ -25,13 +30,13 @@ def evolute_line (line, rule_type):
     def cond_rule (index):
 
 
-        if mode == 'bounded':  # side cells don't interact with each other
+        if mode == 'bounded':  # side cells won't interact with each other
         
             if (index == 0):  # left side cell
 
                 return rule (0, line[index], line[index+1], type = rule_type)
 
-            elif (0 < index < len(line)-1):  # center cells
+            elif (0 < index < len(line)-1):  # inner cells
 
                 return rule (line[index-1], line[index], line[index+1], type = rule_type)
 
@@ -40,13 +45,13 @@ def evolute_line (line, rule_type):
                 return rule (line[index-1], line[index], 0, type = rule_type)
 
 
-        elif mode == 'cycled':  # side cells interact with each other like in a loop
+        elif mode == 'cycled':  # side cells will interact with each other like field is loop
 
             if (index == 0):  # left side cell
 
                 return rule (line[-1], line[index], line[index+1], type = rule_type)
 
-            elif (0 < index < len(line)-1):  # center cells
+            elif (0 < index < len(line)-1):  # inner cells
 
                 return rule (line[index-1], line[index], line[index+1], type = rule_type)
 
@@ -59,7 +64,7 @@ def evolute_line (line, rule_type):
 
 
 
-def evalute_field (rule_type):
+def evolute_field (rule_type):  # evolute field's initial cells step-by-step according to the given interaction rool stacking the resulting lines
 
     for h in range (height):
 
@@ -67,7 +72,7 @@ def evalute_field (rule_type):
 
 
 
-def clear_field ():
+def clear_field ():  # wipe field totally
 
     global field
 
@@ -75,7 +80,7 @@ def clear_field ():
 
 
 
-def reinititialize_field ():
+def reinititialize_field ():  # clear field and apply it's initial state
 
     global field
 
@@ -84,7 +89,7 @@ def reinititialize_field ():
 
 
 
-def print_field ():
+def print_field ():  # output each field's line
 
     for line in field:
 
@@ -101,33 +106,33 @@ def print_field ():
 
 
 
-def execute (rule_type):
+def execute (rule_type):  # output the result of evolution
 
-    evalute_field (rule_type = rule_type)
+    evolute_field (rule_type = rule_type)
     print_field ()
 
 
 
-def execute_and_reinitialize (rule_type):
+def execute_and_reinitialize (rule_type):  # shortcut. output the result of evolution and reinitialize field
 
-    evalute_field (rule_type = rule_type)
+    evolute_field (rule_type = rule_type)
     print_field ()
     reinititialize_field ()
 
 
 
-def screen_stats ():
+def print_screen_size ():
 
     print (f'width: {width}, height: {height}')
 
 
 
-def separator ():
+def print_separator ():
 
     print ('-' * width)
 
 
 
-def space ():
+def print_space ():
 
     print ()

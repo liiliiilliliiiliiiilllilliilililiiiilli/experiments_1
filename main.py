@@ -1,8 +1,11 @@
+
+# main file, the only needed to be executed
+
 from time import sleep
 
 
-from params.params import mode
-from components.components import screen_stats, separator, space, execute_and_reinitialize
+from params.params import mode, output_delay
+from components.components import print_screen_size as screen_size, print_separator as separator, print_space as space, execute_and_reinitialize
 
 
 
@@ -11,7 +14,7 @@ def main ():
     rools = range (256)
 
 
-    screen_stats ()
+    screen_size ()
 
     for rool in rools:
 
@@ -29,7 +32,7 @@ def main ():
         execute_and_reinitialize (rool)
         space ()
 
-        # sleep (0.5)
+        sleep (output_delay)  # delay the field plots print (seconds)
 
 
 
