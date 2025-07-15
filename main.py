@@ -28,7 +28,7 @@ def main ():
 
         print (f'mode: {mode}')
         space ()
-        print (f'schema: {schema}  |  {schema_bin}  |  {schema_bin_map}')
+        print (f'schema: {schema} | {schema_bin} | {schema_bin_map}')
         space ()
         print ('plot:')
         space ()
