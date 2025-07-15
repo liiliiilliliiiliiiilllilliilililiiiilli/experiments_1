@@ -1,1 +1,3 @@
-start main.py
+The main file is ./main.py. To start start it.
+
+To change the system's parameters change ./parameters/parameters.py.
