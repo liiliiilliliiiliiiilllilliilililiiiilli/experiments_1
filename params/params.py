@@ -5,7 +5,7 @@
 # 
 #   o: [whatever string chars you want] - responsable of outputted graphics view.
 # 
-#   mode: "bounded" / "cycled" - responsable of field's cells interraction.
+#   output_mode: "bounded" / "cycled" - responsable of field's cells interraction.
 # 
 #   output_delay: [int] - delay outputs go.
 # 
@@ -18,7 +18,7 @@ from math import floor
 
 
 o = ' ░▒▓█'  # graphics units
-mode = 'cycled'  # cells interaction type: bounded / cycled
+output_mode = 'cycled'  # cells interaction type: bounded / cycled
 output_delay = 0  # outputs delay (in seconds)
 
 

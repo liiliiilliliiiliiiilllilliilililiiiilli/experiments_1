@@ -1,7 +1,7 @@
 # File of project's components.
 
 
-from params.params import o, mode, height, width, field, field_initial_state
+from params.params import o, output_mode as mode, height, width, field, field_initial_state
 
 
 
@@ -27,7 +27,6 @@ def evolute_line (line, schema_type):
 
     def schema_cond (index):
 
-
         if mode == 'bounded':  # side cells won't interact with each other
         
             if (index == 0):  # left side cell
@@ -42,8 +41,7 @@ def evolute_line (line, schema_type):
 
                 return schema (line[index-1], line[index], 0, type = schema_type)
 
-
-        elif mode == 'cycled':  # side cells will interact with each other like field is loop
+        elif mode == 'cycled':  # side cells will interact with each other like field is looped
 
             if (index == 0):  # left side cell
 
@@ -58,7 +56,10 @@ def evolute_line (line, schema_type):
                 return schema (line[index-1], line[index], line[0], type = schema_type)
 
 
-    return list (map (schema_cond, range (len (line))))
+    evoluted_line = list (map (schema_cond, range (len (line))))
+
+
+    return evoluted_line
 
 
 
@@ -91,7 +92,7 @@ def print_field ():  # output each field's line
 
     for line in field:
 
-        print (''.join (map (lambda u: [o[0], o[4]][u], line)))  # translation line
+        print (''.join (map (lambda u: [o[0], o[4]][u], line)))  # line's translation
 
 
 
