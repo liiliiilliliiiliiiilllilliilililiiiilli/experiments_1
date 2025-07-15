@@ -2,14 +2,14 @@
 
 
 from time import sleep
-from params.params import output_mode as mode, output_delay
+from parameters.parameters import output_mode as mode, output_delay
 from components.components import print_space as space, print_separator as separator, print_screen_size as screen_size, execute_and_reinitialize
 
 
 
 def main ():
 
-    schemas = range (256)
+    schemes = range (256)
 
 
     space ()
@@ -22,19 +22,19 @@ def main ():
     separator ()
     space ()
 
-    for schema in schemas:
+    for scheme in schemes:
 
-        schema_bin = bin(schema)[2:].rjust(8, '0')
+        schema_bin = bin(scheme)[2:].rjust(8, '0')
         schema_bin_map = ''.join (f'{bin(i)[2:].rjust(3, '0')} -> {schema_bin[i]}' + (', ' if i else '') for i in range (7, -1, -1))
 
 
         print (f'mode: {mode}')
         space ()
-        print (f'schema: {schema} | {schema_bin} | {schema_bin_map}')
+        print (f'scheme: {scheme} | {schema_bin} | {schema_bin_map}')
         space ()
         print ('plot:')
         space ()
-        execute_and_reinitialize (schema)
+        execute_and_reinitialize (scheme)
         space ()
         separator ()
         space ()

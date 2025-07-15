@@ -1,11 +1,11 @@
 # File of project's components.
 
 
-from params.params import o, output_mode as mode, height, width, field, field_initial_state
+from parameters.parameters import o, output_mode as mode, height, width, field, field_initial_state
 
 
 
-def schema (l, c, r, type):  # cells' interaction schema
+def scheme (l, c, r, type):  # cells' interaction scheme
 
     dests = list (map (int, bin(type)[2:].rjust(8, '0')))
 
@@ -31,29 +31,29 @@ def evolute_line (line, schema_type):
         
             if (index == 0):  # left side cell
 
-                return schema (0, line[index], line[index+1], type = schema_type)
+                return scheme (0, line[index], line[index+1], type = schema_type)
 
             elif (0 < index < len(line)-1):  # inner cells
 
-                return schema (line[index-1], line[index], line[index+1], type = schema_type)
+                return scheme (line[index-1], line[index], line[index+1], type = schema_type)
 
             elif (index == len(line)-1):  # right side cell
 
-                return schema (line[index-1], line[index], 0, type = schema_type)
+                return scheme (line[index-1], line[index], 0, type = schema_type)
 
         elif mode == 'cycled':  # side cells will interact with each other like field is looped
 
             if (index == 0):  # left side cell
 
-                return schema (line[-1], line[index], line[index+1], type = schema_type)
+                return scheme (line[-1], line[index], line[index+1], type = schema_type)
 
             elif (0 < index < len(line)-1):  # inner cells
 
-                return schema (line[index-1], line[index], line[index+1], type = schema_type)
+                return scheme (line[index-1], line[index], line[index+1], type = schema_type)
 
             elif (index == len(line)-1):  # right side cell
 
-                return schema (line[index-1], line[index], line[0], type = schema_type)
+                return scheme (line[index-1], line[index], line[0], type = schema_type)
 
 
     evoluted_line = list (map (schema_cond, range (len (line))))
@@ -63,7 +63,7 @@ def evolute_line (line, schema_type):
 
 
 
-def evolute_field (schema_type):  # evolute field's initial cells step-by-step according to the given interaction schema stacking the resulting lines
+def evolute_field (schema_type):  # evolute field's initial cells step-by-step according to the given interaction scheme stacking the resulting lines
 
     for h in range (height):
 
