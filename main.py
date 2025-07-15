@@ -1,5 +1,5 @@
+# Main file, the only needed to be executed.
 
-# main file, the only needed to be executed
 
 from time import sleep
 
@@ -11,25 +11,26 @@ from components.components import print_screen_size as screen_size, print_separa
 
 def main ():
 
-    rools = range (256)
+    rules = range (256)
 
-
+    space ()
     screen_size ()
+    space ()
 
-    for rool in rools:
+    for rule in rules:
 
-        rool_bin = bin(rool)[2:].rjust(8, '0')
-        rool_bin_map = ''.join (f'{bin(i)[2:].rjust(3, '0')} -> {rool_bin[i]}' + (', ' if i else '') for i in range (7, -1, -1))
+        rule_bin = bin(rule)[2:].rjust(8, '0')
+        rule_bin_map = ''.join (f'{bin(i)[2:].rjust(3, '0')} -> {rule_bin[i]}' + (', ' if i else '') for i in range (7, -1, -1))
 
         separator ()
         space ()
         print (f'mode: {mode}')
         space ()
-        print (f'rule: {rool} ·•· {rool_bin} ·•· {rool_bin_map}')
+        print (f'rule: {rule}  |  {rule_bin}  |  {rule_bin_map}')
         space ()
         print ('plot:')
         space ()
-        execute_and_reinitialize (rool)
+        execute_and_reinitialize (rule)
         space ()
 
         sleep (output_delay)  # delay the field plots print (seconds)

@@ -1,6 +1,4 @@
-
-# file of project's components
-
+# File of project's components.
 
 
 from params.params import o, mode, height, width, field, field_initial_state
@@ -9,7 +7,7 @@ from params.params import o, mode, height, width, field, field_initial_state
 
 def rule (l, c, r, type):  # cells' interaction rule
 
-    dests = list(map(int, bin(type)[2:].rjust(8, '0')))
+    dests = list (map (int, bin(type)[2:].rjust(8, '0')))
 
 
     match l, c, r:
@@ -60,11 +58,11 @@ def evolute_line (line, rule_type):
                 return rule (line[index-1], line[index], line[0], type = rule_type)
 
 
-    return list(map(cond_rule, range(len(line))))
+    return list (map (cond_rule, range (len (line))))
 
 
 
-def evolute_field (rule_type):  # evolute field's initial cells step-by-step according to the given interaction rool stacking the resulting lines
+def evolute_field (rule_type):  # evolute field's initial cells step-by-step according to the given interaction rule stacking the resulting lines
 
     for h in range (height):
 
@@ -93,16 +91,7 @@ def print_field ():  # output each field's line
 
     for line in field:
 
-        line_symbols = ''
-
-        for u in line:
-
-            match u:
-
-                case 0: line_symbols += (o[0])
-                case 1: line_symbols += (o[4])
-
-        print (line_symbols)
+        print (''.join (map (lambda u: [o[0], o[4]][u], line)))  # translation line
 
 
 
@@ -123,7 +112,7 @@ def execute_and_reinitialize (rule_type):  # shortcut. output the result of evol
 
 def print_screen_size ():
 
-    print (f'width: {width}, height: {height}')
+    print (f'virtual screen: {height}h, {width}w')
 
 
 

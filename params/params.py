@@ -1,15 +1,15 @@
-
-# file of project's parameters
+# File of project's parameters.
 # 
 # 
-# there you can switch parameters as follows:
+# There you can switch parameters as follows:
 # 
-#   o: [whatever string chars you want] - responsable of outputted graphics view
+#   o: [whatever string chars you want] - responsable of outputted graphics view.
 # 
-#   mode: "bounded" / "cycled" - responsable of field's cells interraction
+#   mode: "bounded" / "cycled" - responsable of field's cells interraction.
 # 
-#   height, width: [int, int] - AUTOMATIC! responsable of field's plot size. Default is the terminal size
-
+#   output_delay: [int] - delay outputs go.
+# 
+#   height, width: [int, int] - AUTOMATIC! responsable of field's plot size. Default is the terminal size.
 
 
 import os
@@ -19,7 +19,7 @@ from math import floor
 
 o = ' ░▒▓█'  # graphics units
 mode = 'cycled'  # cells interaction type: bounded / cycled
-output_delay = 0.5
+output_delay = 0  # outputs delay
 
 
 
@@ -34,8 +34,8 @@ field_initial_state = []  # cells field initial state, setted to an empty line w
 
 match width % 2:  # centralizing the cell
 
-    case 1: field_initial_state = [0] * floor(width/2) + [1] + [0] * floor(width/2)
+    case 1: field_initial_state = [0] * floor(width/2) + [1] + [0] * floor(width/2)  # even width value
 
-    case 0: field_initial_state = [0] * int(width/2) + [1] + [0] * int(width/2-1)
+    case 0: field_initial_state = [0] * int(width/2) + [1] + [0] * int(width/2-1)  # odd width value
 
 field.append (field_initial_state)
