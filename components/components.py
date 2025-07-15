@@ -5,7 +5,7 @@ from params.params import o, mode, height, width, field, field_initial_state
 
 
 
-def rule (l, c, r, type):  # cells' interaction rule
+def schema (l, c, r, type):  # cells' interaction schema
 
     dests = list (map (int, bin(type)[2:].rjust(8, '0')))
 
@@ -23,50 +23,50 @@ def rule (l, c, r, type):  # cells' interaction rule
 
 
 
-def evolute_line (line, rule_type):
+def evolute_line (line, schema_type):
 
-    def cond_rule (index):
+    def schema_cond (index):
 
 
         if mode == 'bounded':  # side cells won't interact with each other
         
             if (index == 0):  # left side cell
 
-                return rule (0, line[index], line[index+1], type = rule_type)
+                return schema (0, line[index], line[index+1], type = schema_type)
 
             elif (0 < index < len(line)-1):  # inner cells
 
-                return rule (line[index-1], line[index], line[index+1], type = rule_type)
+                return schema (line[index-1], line[index], line[index+1], type = schema_type)
 
             elif (index == len(line)-1):  # right side cell
 
-                return rule (line[index-1], line[index], 0, type = rule_type)
+                return schema (line[index-1], line[index], 0, type = schema_type)
 
 
         elif mode == 'cycled':  # side cells will interact with each other like field is loop
 
             if (index == 0):  # left side cell
 
-                return rule (line[-1], line[index], line[index+1], type = rule_type)
+                return schema (line[-1], line[index], line[index+1], type = schema_type)
 
             elif (0 < index < len(line)-1):  # inner cells
 
-                return rule (line[index-1], line[index], line[index+1], type = rule_type)
+                return schema (line[index-1], line[index], line[index+1], type = schema_type)
 
             elif (index == len(line)-1):  # right side cell
 
-                return rule (line[index-1], line[index], line[0], type = rule_type)
+                return schema (line[index-1], line[index], line[0], type = schema_type)
 
 
-    return list (map (cond_rule, range (len (line))))
+    return list (map (schema_cond, range (len (line))))
 
 
 
-def evolute_field (rule_type):  # evolute field's initial cells step-by-step according to the given interaction rule stacking the resulting lines
+def evolute_field (schema_type):  # evolute field's initial cells step-by-step according to the given interaction schema stacking the resulting lines
 
     for h in range (height):
 
-        field.append (evolute_line (field[-1], rule_type = rule_type))
+        field.append (evolute_line (field[-1], schema_type = schema_type))
 
 
 
@@ -95,16 +95,16 @@ def print_field ():  # output each field's line
 
 
 
-def execute (rule_type):  # output the result of evolution
+def execute (schema_type):  # output the result of evolution
 
-    evolute_field (rule_type = rule_type)
+    evolute_field (schema_type = schema_type)
     print_field ()
 
 
 
-def execute_and_reinitialize (rule_type):  # shortcut. output the result of evolution and reinitialize field
+def execute_and_reinitialize (schema_type):  # shortcut. output the result of evolution and reinitialize field
 
-    evolute_field (rule_type = rule_type)
+    evolute_field (schema_type = rule_type)
     print_field ()
     reinititialize_field ()
 

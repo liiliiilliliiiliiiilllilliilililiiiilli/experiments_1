@@ -11,26 +11,30 @@ from components.components import print_screen_size as screen_size, print_separa
 
 def main ():
 
-    rules = range (256)
+    schemas = range (256)
 
+    space ()
+    separator ()
     space ()
     screen_size ()
     space ()
+    separator ()
+    space ()
 
-    for rule in rules:
+    for schema in schemas:
 
-        rule_bin = bin(rule)[2:].rjust(8, '0')
-        rule_bin_map = ''.join (f'{bin(i)[2:].rjust(3, '0')} -> {rule_bin[i]}' + (', ' if i else '') for i in range (7, -1, -1))
+        schema_bin = bin(schema)[2:].rjust(8, '0')
+        schema_bin_map = ''.join (f'{bin(i)[2:].rjust(3, '0')} -> {schema_bin[i]}' + (', ' if i else '') for i in range (7, -1, -1))
 
-        separator ()
-        space ()
         print (f'mode: {mode}')
         space ()
-        print (f'rule: {rule}  |  {rule_bin}  |  {rule_bin_map}')
+        print (f'schema: {schema}  |  {schema_bin}  |  {schema_bin_map}')
         space ()
         print ('plot:')
         space ()
-        execute_and_reinitialize (rule)
+        execute_and_reinitialize (schema)
+        space ()
+        separator ()
         space ()
 
         sleep (output_delay)  # delay the field plots print (seconds)
