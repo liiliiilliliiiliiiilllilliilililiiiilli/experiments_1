@@ -19,7 +19,7 @@ from math import floor
 
 o = ' ░▒▓█'  # graphics units
 mode = 'cycled'  # cells interaction type: bounded / cycled
-output_delay = 1  # outputs delay
+output_delay = 0  # outputs delay (in seconds)
 
 
 

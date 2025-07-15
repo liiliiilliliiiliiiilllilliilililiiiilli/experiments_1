@@ -104,7 +104,7 @@ def execute (schema_type):  # output the result of evolution
 
 def execute_and_reinitialize (schema_type):  # shortcut. output the result of evolution and reinitialize field
 
-    evolute_field (schema_type = rule_type)
+    evolute_field (schema_type = schema_type)
     print_field ()
     reinititialize_field ()
 
