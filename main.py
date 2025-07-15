@@ -2,8 +2,8 @@
 
 
 from time import sleep
-from parameters.parameters import output_mode as mode, output_delay
-from components.components import print_space as space, print_separator as separator, print_screen_size as screen_size, execute_and_reinitialize
+from parameters.parameters import output_mode as mode, output_delay as delay
+from components.components import print_space as space, print_separator as separator, print_screen_size as screen_size, execute_and_reinitialize as plot_field_from_initial_state
 
 
 
@@ -34,12 +34,12 @@ def main ():
         space ()
         print ('plot:')
         space ()
-        execute_and_reinitialize (scheme)
+        plot_field_from_initial_state (scheme)
         space ()
         separator ()
         space ()
 
-        sleep (output_delay)  # delay the field plots print (seconds)
+        if scheme != 255: sleep (delay)  # delay the field plots print (seconds)
 
     print ('[system end]')
     space ()
